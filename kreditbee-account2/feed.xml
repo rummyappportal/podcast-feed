@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0"
     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
-    xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    xmlns:content="http://purl.org/rss/1.0/modules/content/"
+    xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0">
   <channel>
     <title>KreditBee Invite Code: "DINPSZVQ5" – (Get 75 Instant Reward Points)</title>
     <link>https://github.com/rummyappportal/podcast-feed</link>
-    <language>en</language>
+    <language>en-us</language>
+    <copyright>Latest KreditBee Invite Code</copyright>
     <itunes:author>Latest KreditBee Invite Code</itunes:author>
+    <googleplay:author>Latest KreditBee Invite Code</googleplay:author>
     <itunes:summary><![CDATA[<p>The active and verified KreditBee invite code for 2026 is <b>DINPSZVQ5</b>. Enter this promo code during registration to instantly receive 75 Reward Points to lower your processing fees.</p>
 
 <ul>
@@ -165,10 +168,18 @@
       <itunes:name>Latest KreditBee Invite Code</itunes:name>
       <itunes:email>laleetshokeen@gmail.com</itunes:email>
     </itunes:owner>
-    <itunes:explicit>false</itunes:explicit>
-    <itunes:image href="https://rummyappportal.github.io/podcast-feed/kreditbee/kreditbee-account2/cover.jpg" />
-    <itunes:category text="Business" />
+    <itunes:explicit>no</itunes:explicit>
+    <itunes:image href="https://rummyappportal.github.io/podcast-feed/kreditbee-account2/cover.jpg" />
+    <googleplay:image href="https://rummyappportal.github.io/podcast-feed/kreditbee-account2/cover.jpg" />
+    <itunes:category text="Business">
+      <itunes:category text="Entrepreneurship"/>
+    </itunes:category>
     <itunes:type>episodic</itunes:type>
+    <image>
+      <url>https://rummyappportal.github.io/podcast-feed/kreditbee-account2/cover.jpg</url>
+      <title>KreditBee Invite Code: DINPSZVQ5 - Get 75 Instant Reward Points</title>
+      <link>https://github.com/rummyappportal/podcast-feed</link>
+    </image>
     <item>
       <title>KreditBee Invite Code: "DINPSZVQ5" – (Get 75 Instant Reward Points)</title>
       <link>https://github.com/rummyappportal/podcast-feed</link>
@@ -328,10 +339,13 @@
 <h3>The Final Verdict</h3>
 
 <p>In the crowded market of fintech lending, KreditBee maintains its stronghold through sheer accessibility, transparent pricing, and a genuinely useful rewards program. Whether it's to cover a medical bill or fund a small home renovation, the app delivers on its promise of "instant cash." For more comparisons and promo code updates, <a href="https://hubhopper.com/podcast/kreditbee-referral-code-guide/485691">visit our complete podcast channel on Hubhopper</a>. Start your application today, use the code <b>DINPSZVQ5</b>, and experience hassle-free digital lending.</p>]]></description>
-      <enclosure url="https://rummyappportal.github.io/podcast-feed/kreditbee/kreditbee-account2/audio.mp3" type="audio/mpeg" length="1817136"/>
+      <enclosure url="https://rummyappportal.github.io/podcast-feed/kreditbee-account2/audio.mp3" type="audio/mpeg" length="1817136"/>
       <guid isPermaLink="false">custom-feed-kreditbee-acc2-001</guid>
       <pubDate>Thu, 02 Jul 2026 10:00:00 GMT</pubDate>
-      <itunes:explicit>false</itunes:explicit>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:image href="https://rummyappportal.github.io/podcast-feed/kreditbee-account2/cover.jpg" />
+      <author>laleetshokeen@gmail.com</author>
     </item>
   </channel>
 </rss>
