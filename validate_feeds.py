@@ -4,8 +4,8 @@ import re
 import urllib.request
 
 files = [
-    r'c:\Users\dinesh\Downloads\mojolocontentgudlines\podcast-feed-repo\kreditbee\feed.xml',
-    r'c:\Users\dinesh\Downloads\mojolocontentgudlines\podcast-feed-repo\kreditbee-account2\feed.xml'
+    r'c:\Users\dinesh\Downloads\mojolocontentgudlines\podcast-feed-repo\bachat\feed.xml',
+    r'c:\Users\dinesh\Downloads\mojolocontentgudlines\podcast-feed-repo\branch\feed.xml'
 ]
 
 ns = {'itunes': 'http://www.itunes.com/dtds/podcast-1.0.dtd',

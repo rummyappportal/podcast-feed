@@ -21,8 +21,8 @@ def resize_image(image_path, target_size=(1400, 1400)):
         print(f"Error processing {image_path}: {e}")
 
 if __name__ == "__main__":
-    img1 = r"c:\Users\dinesh\Downloads\mojolocontentgudlines\podcast-feed-repo\kreditbee\cover.png"
-    img2 = r"c:\Users\dinesh\Downloads\mojolocontentgudlines\podcast-feed-repo\kreditbee-account2\cover.jpg"
+    img1 = r"c:\Users\dinesh\Downloads\mojolocontentgudlines\podcast-feed-repo\bachat\cover.png"
+    img2 = r"c:\Users\dinesh\Downloads\mojolocontentgudlines\podcast-feed-repo\branch\cover.png"
     
     resize_image(img1)
     resize_image(img2)
