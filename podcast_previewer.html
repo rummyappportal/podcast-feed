@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcast App Previewer</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --surface-color: #181818;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3b3;
+            --accent: #1db954;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .row {
+            display: flex;
+            gap: 10px;
+        }
+        select, input[type="text"] {
+            padding: 12px 20px;
+            border-radius: 50px;
+            border: none;
+            background-color: #282828;
+            color: white;
+            font-size: 16px;
+            outline: none;
+        }
+        select {
+            flex: 1;
+            cursor: pointer;
+            appearance: none;
+        }
+        input[type="text"] {
+            flex: 1;
+        }
+        select:focus, input[type="text"]:focus {
+            box-shadow: 0 0 0 2px var(--accent);
+        }
+        button {
+            padding: 12px 24px;
+            border-radius: 50px;
+            border: none;
+            background-color: var(--accent);
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+        button:hover {
+            transform: scale(1.05);
+            background-color: #1ed760;
+        }
+        .app-mockup {
+            background-color: var(--surface-color);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: none;
+        }
+        .podcast-header {
+            padding: 30px;
+            display: flex;
+            gap: 24px;
+            align-items: flex-end;
+            background: linear-gradient(transparent, rgba(0,0,0,0.5));
+        }
+        .cover-image {
+            width: 192px;
+            height: 192px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            object-fit: cover;
+        }
+        .podcast-info h2 {
+            font-size: 14px;
+            text-transform: uppercase;
+            margin: 0 0 8px 0;
+            color: var(--text-secondary);
+        }
+        .podcast-info h1 {
+            font-size: 32px;
+            margin: 0 0 12px 0;
+            line-height: 1.2;
+        }
+        .podcast-info p {
+            margin: 0;
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+        .controls {
+            padding: 24px 30px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            border-bottom: 1px solid #282828;
+        }
+        .play-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+        }
+        .play-btn::after {
+            content: "";
+            border-style: solid;
+            border-width: 10px 0 10px 16px;
+            border-color: transparent transparent transparent white;
+            margin-left: 4px;
+        }
+        .rendered-content {
+            padding: 30px;
+            line-height: 1.6;
+            font-size: 16px;
+            color: #b3b3b3;
+        }
+        .rendered-content h2, .rendered-content h3 {
+            color: white;
+            margin-top: 32px;
+            margin-bottom: 16px;
+        }
+        .rendered-content a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .rendered-content a:hover {
+            text-decoration: underline;
+        }
+        .rendered-content ul, .rendered-content ol {
+            padding-left: 20px;
+            margin-bottom: 24px;
+        }
+        .rendered-content li {
+            margin-bottom: 12px;
+        }
+        .rendered-content b, .rendered-content strong {
+            color: white;
+        }
+        .rendered-content hr {
+            border: none;
+            border-top: 1px solid #282828;
+            margin: 32px 0;
+        }
+        .loading {
+            text-align: center;
+            padding: 50px;
+            display: none;
+            color: var(--text-secondary);
+        }
+        .error {
+            color: #e22134;
+            text-align: center;
+            padding: 20px;
+            display: none;
+            background: rgba(226, 33, 52, 0.1);
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Spotify / Apple Podcasts Previewer</h1>
+        <p style="color: var(--text-secondary)">See exactly how your CDATA text will render in a real podcast app.</p>
+    </div>
+
+    <div class="input-group">
+        <div class="row">
+            <select id="feedSelect" onchange="updateInput()">
+                <option value="">-- Select a predefined Feed --</option>
+                <option value="https://rummyappportal.github.io/podcast-feed/kreditbee/feed.xml">1. KreditBee</option>
+                <option value="https://rummyappportal.github.io/podcast-feed/kreditbee-account2/feed.xml">2. KreditBee Account 2</option>
+                <option value="https://rummyappportal.github.io/podcast-feed/feed.xml">3. MoneyView Root (wizizn4m)</option>
+                <option value="https://rummyappportal.github.io/podcast-feed/moneyview-mveqhrbq/feed.xml">4. MoneyView mveqhrbq</option>
+                <option value="https://rummyappportal.github.io/podcast-feed/moneyview-rnpzh7jm-business/feed.xml">5. MoneyView rnpzh7jm Business</option>
+                <option value="https://rummyappportal.github.io/podcast-feed/moneyview-rnpzh7jm-medical/feed.xml">6. MoneyView rnpzh7jm Medical</option>
+                <option value="https://rummyappportal.github.io/podcast-feed/moneyview-rnpzh7jm-student/feed.xml">7. MoneyView rnpzh7jm Student</option>
+                <option value="https://rummyappportal.github.io/podcast-feed/moneyview-rnpzh7jm-11jul2026/feed.xml">8. MoneyView rnpzh7jm 11Jul</option>
+                <option value="https://rummyappportal.github.io/podcast-feed/moneyview-zyw/feed.xml">9. MoneyView zyw</option>
+                <option value="https://rummyappportal.github.io/podcast-feed/moneyview-yapukznv/feed.xml">10. MoneyView yapukznv</option>
+                <option value="https://rummyappportal.github.io/podcast-feed/moneyview-yapukznv-2/feed.xml">11. MoneyView yapukznv-2</option>
+                <option value="https://rummyappportal.github.io/podcast-feed/branch/feed.xml">12. Branch</option>
+                <option value="https://rummyappportal.github.io/podcast-feed/bachat/feed.xml">13. Bachat</option>
+            </select>
+        </div>
+        <div class="row">
+            <input type="text" id="feedUrl" value="https://rummyappportal.github.io/podcast-feed/kreditbee/feed.xml" placeholder="Or paste any feed.xml URL here...">
+            <button onclick="fetchFeed()">Preview Now</button>
+        </div>
+    </div>
+
+    <div id="loading" class="loading">Fetching and parsing your XML...</div>
+    <div id="error" class="error"></div>
+
+    <div id="appMockup" class="app-mockup">
+        <div class="podcast-header">
+            <img id="coverImage" class="cover-image" src="" alt="Podcast Cover">
+            <div class="podcast-info">
+                <h2>Podcast Episode</h2>
+                <h1 id="epTitle">Episode Title</h1>
+                <p id="authorName">Author Name</p>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button class="play-btn" title="Play"></button>
+            <span id="duration" style="color: var(--text-secondary); font-size: 14px; font-weight: bold;">00:00</span>
+        </div>
+
+        <div id="renderedContent" class="rendered-content">
+            <!-- CDATA content will be injected here -->
+        </div>
+    </div>
+</div>
+
+<script>
+    function updateInput() {
+        const select = document.getElementById('feedSelect');
+        if (select.value) {
+            document.getElementById('feedUrl').value = select.value;
+            fetchFeed(); // automatically fetch when selected
+        }
+    }
+
+    async function fetchFeed() {
+        const url = document.getElementById('feedUrl').value.trim();
+        const loading = document.getElementById('loading');
+        const error = document.getElementById('error');
+        const mockup = document.getElementById('appMockup');
+        
+        if (!url) return;
+        
+        loading.style.display = 'block';
+        error.style.display = 'none';
+        mockup.style.display = 'none';
+        
+        try {
+            const response = await fetch(url);
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            const text = await response.text();
+            
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(text, "text/xml");
+            
+            // Check for parsing errors
+            const parserError = xmlDoc.querySelector('parsererror');
+            if (parserError) {
+                throw new Error("Invalid XML structure in your feed.");
+            }
+            
+            // Extract data using standard RSS tags
+            const channel = xmlDoc.querySelector('channel');
+            const item = xmlDoc.querySelector('item');
+            
+            if (!item) throw new Error("No <item> (episode) found in the feed.");
+            
+            // Get Image
+            let imgUrl = "";
+            const itunesImage = item.getElementsByTagName('itunes:image')[0] || channel.getElementsByTagName('itunes:image')[0];
+            if (itunesImage) {
+                imgUrl = itunesImage.getAttribute('href');
+            } else {
+                const standardImg = channel.querySelector('image url');
+                if (standardImg) imgUrl = standardImg.textContent;
+            }
+            
+            // Get Title
+            const title = item.querySelector('title') ? item.querySelector('title').textContent : 'Unknown Title';
+            
+            // Get Author
+            const author = item.getElementsByTagName('itunes:author')[0] ? item.getElementsByTagName('itunes:author')[0].textContent : 'Unknown Author';
+            
+            // Get Content (Try <content:encoded>, then <description>, then <itunes:summary>)
+            let content = "";
+            const contentEncoded = item.getElementsByTagName('content:encoded')[0];
+            const description = item.querySelector('description');
+            const summary = item.getElementsByTagName('itunes:summary')[0];
+            
+            if (contentEncoded && contentEncoded.textContent) {
+                content = contentEncoded.textContent;
+            } else if (description && description.textContent) {
+                content = description.textContent;
+            } else if (summary && summary.textContent) {
+                content = summary.textContent;
+            }
+            
+            // Update UI
+            document.getElementById('coverImage').src = imgUrl || 'https://via.placeholder.com/192x192?text=No+Image';
+            document.getElementById('epTitle').textContent = title;
+            document.getElementById('authorName').textContent = author;
+            document.getElementById('renderedContent').innerHTML = content;
+            
+            // Try to get duration
+            const duration = item.getElementsByTagName('itunes:duration')[0];
+            if (duration) {
+                let dur = duration.textContent;
+                // format if it's just seconds
+                if (!dur.includes(':')) {
+                    const totalSecs = parseInt(dur);
+                    const m = Math.floor(totalSecs / 60);
+                    const s = totalSecs % 60;
+                    dur = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+                }
+                document.getElementById('duration').textContent = dur + " MIN";
+            }
+            
+            // Show mockup
+            loading.style.display = 'none';
+            mockup.style.display = 'block';
+            
+        } catch (e) {
+            loading.style.display = 'none';
+            error.style.display = 'block';
+            error.textContent = `Error loading feed: ${e.message} (Note: If it's a CORS error, you might need to use a browser extension or preview directly from a live server).`;
+        }
+    }
+</script>
+</body>
+</html>
