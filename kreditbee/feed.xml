@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0"
     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
-    xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    xmlns:content="http://purl.org/rss/1.0/modules/content/"
+    xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0">
   <channel>
     <title>KreditBee Referral Code: "DINPSZVQ5" – (Get Flat 75 Reward Points)</title>
     <link>https://github.com/rummyappportal/podcast-feed</link>
-    <language>en</language>
+    <language>en-us</language>
+    <copyright>KreditBee Referral Code Guide</copyright>
     <itunes:author>KreditBee Referral Code Guide</itunes:author>
+    <googleplay:author>KreditBee Referral Code Guide</googleplay:author>
     <itunes:summary><![CDATA[<p>The verified and active KreditBee referral code for 2026 is <b>DINPSZVQ5</b>. Apply this code during sign-up to instantly get 75 Reward Points which can be used as a processing fee discount.</p>
 
 <ul>
@@ -165,10 +168,18 @@
       <itunes:name>KreditBee Referral Code Guide</itunes:name>
       <itunes:email>laleetshokeen@gmail.com</itunes:email>
     </itunes:owner>
-    <itunes:explicit>false</itunes:explicit>
+    <itunes:explicit>no</itunes:explicit>
     <itunes:image href="https://rummyappportal.github.io/podcast-feed/kreditbee/cover.png" />
-    <itunes:category text="Business" />
+    <googleplay:image href="https://rummyappportal.github.io/podcast-feed/kreditbee/cover.png" />
+    <itunes:category text="Business">
+      <itunes:category text="Entrepreneurship"/>
+    </itunes:category>
     <itunes:type>episodic</itunes:type>
+    <image>
+      <url>https://rummyappportal.github.io/podcast-feed/kreditbee/cover.png</url>
+      <title>KreditBee Referral Code: DINPSZVQ5 - Get Flat 75 Reward Points</title>
+      <link>https://github.com/rummyappportal/podcast-feed</link>
+    </image>
     <item>
       <title>KreditBee Referral Code: "DINPSZVQ5" – (Get Flat 75 Reward Points)</title>
       <link>https://github.com/rummyappportal/podcast-feed</link>
@@ -331,7 +342,10 @@
       <enclosure url="https://rummyappportal.github.io/podcast-feed/kreditbee/audio.mp3" type="audio/mpeg" length="1024000"/>
       <guid isPermaLink="false">custom-feed-kreditbee-001</guid>
       <pubDate>Thu, 02 Jul 2026 10:00:00 GMT</pubDate>
-      <itunes:explicit>false</itunes:explicit>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:image href="https://rummyappportal.github.io/podcast-feed/kreditbee/cover.png" />
+      <author>laleetshokeen@gmail.com</author>
     </item>
   </channel>
 </rss>
